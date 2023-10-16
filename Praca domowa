@@ -4,10 +4,10 @@ int main() {
     float x;
     int n;
 
-    cout<< "Podaj liczbe x (liczba zmiennoprzecinkowa):";
+    cout<< "Podaj liczbe x :";
     cin >> x;
 
-    cout<< "POdaj liczbe n (liczba calkowita)";
+    cout<< "POdaj liczbe n ";
     cin >> n;
 
 float wynik = 1;
