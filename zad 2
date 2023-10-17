@@ -9,7 +9,7 @@ int main() {
 
     int ns = name.size();
 
-        if (name.at(nameSize - 1) == 'a') {
+        if (name.at(ns - 1) == 'a') {
             cout << "kobieta ";
         } else {
             cout << "mezczyzna ";
