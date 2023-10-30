@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+int n,a;
+
+cout<<"podaj ilosc elementow zbioru n: "<<endl;
+cin>>n;
+
+int mini = INT_MAX;
+int indeks = 0;
+
+
+    for(int i = 1; i<=n; i++){
+        cout<<"Podaj element: "<<endl;
+        cin>>a;
+
+
+    if (a < mini){
+        mini = a;
+        indeks = i;}
+    }
+
+cout<<"najmiejsza liczba to: "<<mini<<endl;
+cout<<"znajduje sie na miejscu: "<<indeks<<endl;
+}
