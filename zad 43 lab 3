@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Podaj liczbę naturalną n: ";
+    cin >> n;
+
+    int suma = 0;
+
+    for (int i = 1; i < n; ++i) {
+        if (n % i == 0) {
+            suma += i;
+        }
+    }
+
+    cout << "Suma podzielników liczby " << n << " mniejszych od " << n << " wynosi: " << suma << endl;
+
+    if (n % 8 == 0) {
+        cout << "Liczba " << n << " jest podzielna przez 8." << endl;
+    } else {
+        cout << "Liczba " << n << " nie jest podzielna przez 8." << endl;
+    }
+
+    return 0;
