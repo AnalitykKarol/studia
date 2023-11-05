@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int main(){
+
+int a,b;
+cout<<"Podaj pierwsza liczbe ";
+cin>>a;
+cout<<"Podaj druga liczbe ";
+cin>>b;
+
+string aa = to_string(a);
+string bb = to_string(b);
+string agg;
+
+for(auto it = aa.rbegin(); it != aa.rend(); ++it){
+        int ag = *it - '0';
+        agg += to_string(ag);
+        }
+
+    if(agg == bb){
+        cout<<aa<<" i "<<bb<<" to liczby lustrzane"<<endl;
+    } else {
+        cout<<aa<<" i "<<bb<<" nie sa liczbami lustrzanymi"<<endl;
+        }
+
+    return 0;
+}
