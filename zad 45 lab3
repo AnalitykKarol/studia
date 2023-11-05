@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+
+    cout << "Podaj pierwszą liczbę a: ";
+    cin >> a;
+    cout << "Podaj drugą liczbę b: ";
+    cin >> b;
+    cout << "Podaj trzecią liczbę c: ";
+    cin >> c;
+
+    if (a * a + b * b == c * c) {
+        cout << "1" << endl;
+    } else {
+        cout << "0" << endl;
+    }
+
+    return 0;
+}
