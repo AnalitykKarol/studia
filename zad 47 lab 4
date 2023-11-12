@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+double przybliz_pi(int n) {
+    int liczba_trafien = 0;
+
+
+    srand (time(0));
+
+    for (int i = 0; i < n; ++i) {
+
+        double x = static_cast<double>(rand()) / RAND_MAX;
+        double y = static_cast<double>(rand()) / RAND_MAX;
+
+
+        if (x * x + y * y <= 1) {
+            liczba_trafien++;
+        }
+    }
+
+
+    double przyblizone_pi = 4.0 * (static_cast<double>(liczba_trafien) / n);
+
+    return przyblizone_pi;
+}
+
+int main() {
+
+    int n;
+    cout<<"wprowadz liczbe n(ilosc powtorzen): ";
+    cin>>n;
+    double wynik = przybliz_pi(n);
+
+    cout << "Przyblizona wartosc liczby pi dla " << n << " punktów: " << wynik <<endl;
+
+    return 0;
+}
