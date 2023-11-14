@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+
+int big = 0, sum = 0;
+
+int main() {
+    while (true) {
+        string asd;
+        cout << "Podaj ciag znakow (nacisnij enter, aby zakonczyc): ";
+        getline(cin, asd);
+
+        if (asd.size() == 0) {
+            cout << "Program zakonczony." << endl;
+            break;
+        }
+
+        int n = asd.size();
+
+        for (int i = 0; i < n; i++) {
+            char cc = asd[i];
+
+            if (cc == 'k') {
+                cout << "Do litery k ";
+                break;
+            } else {
+                sum++;
+            }
+
+            if (cc >= 'A' && cc <= 'Z') {
+                big++;
+            }
+        }
+
+        cout << "Suma symboli to: " << sum << endl;
+        cout << "Wielkich liter było: " << big << endl;
+
+
+        big = 0;
+        sum = 0;
+    }
+
+    return 0;
+}
