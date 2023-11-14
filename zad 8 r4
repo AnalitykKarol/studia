@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <string>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -8,11 +9,14 @@ int main() {
     int litery = 0, cyfry = 0, znaki = 0;
 
     string asd;
-    cout << "Wprowadz znaki :" << endl;
+    cout << "Wprowadz znaki: " << endl;
     getline(cin, asd);
     int n = asd.size();
 
-    for(int i = 0;i<n;i++){
+    int maxi = 0;
+    vector<char> king;
+
+    for(int i = 0; i < n; i++) {
         char cc = asd[i];
         if (cc == '0') {
             break;
@@ -27,9 +31,56 @@ int main() {
         }
     }
 
-    cout << "Liczba liter: " << litery << endl;
-    cout << "Liczba cyfr: " << cyfry << endl;
-    cout << "Liczba symboli: " << znaki << endl;
+    if (litery > maxi) {
+        maxi = litery;
+        king = {'l'};
+    } else if (litery == maxi) {
+        king.push_back('l');
+    }
+
+    if (cyfry > maxi) {
+        maxi = cyfry;
+        king = {'c'};
+    } else if (cyfry == maxi) {
+        king.push_back('c');
+    }
+
+    if (znaki > maxi) {
+        maxi = znaki;
+        king = {'z'};
+    } else if (znaki == maxi) {
+        king.push_back('z');
+    }
+
+    if (king.size() == 1) {
+        switch (king[0]) {
+            case 'l':
+                cout << "Najwiecej liter: " << litery << endl;
+                break;
+            case 'c':
+                cout << "Najwiecej cyfr: " << cyfry << endl;
+                break;
+            case 'z':
+                cout << "Najwiecej symboli: " << znaki << endl;
+                break;
+        }
+    } else {
+        cout << "Rowna liczba dla kategorii: ";
+        for (char draw : king) {
+            switch (draw) {
+                case 'l':
+                    cout << "Litery, ";
+                    break;
+                case 'c':
+                    cout << "Cyfry, ";
+                    break;
+                case 'z':
+                    cout << "Symbole, ";
+                    break;
+            }
+        }
+        cout << "Liczba: " << maxi << endl;
+    }
 
     return 0;
 }
