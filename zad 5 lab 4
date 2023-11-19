@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string napis;
+    cout << "Podaj napis: ";
+    getline(cin, napis);
+
+    for (char &znak : napis) {
+        if (znak == ' ') {
+            znak = '*';
+        }
+    }
+    cout<<"efekt zamiany spacji na gwizdke: "<<napis<<endl;
+
+    auto predator = [](char znak){return znak == '*';};
+    auto san = remove_if(napis.begin(), napis.end(), predator);
+    napis.erase(san, napis.end());
+
+    cout << "napis po usunieciu spacji " << napis << endl;
+
+    return 0;
+}
