@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Podaj liczbę naturalną n: ";
+    cin >> n;
+
+    // Sprawdź, czy liczba n jest dodatnia
+    if (n <= 0) {
+        cout << "Podano niepoprawną liczbę n. Program zakończył działanie." << endl;
+        return 1; // Kod błędu
+    }
+
+    vector<double> liczby;
+    double liczba;
+
+    cout << "Podaj kolejno " << n << " liczb rzeczywistych:" << endl;
+
+    for (int i = 0; i < n; i++) {
+        cin >> liczba;
+        liczby.push_back(liczba);
+    }
+
+    cout << "Pary (a; b), gdzie a > 0 i b > 0:" << endl;
+
+    for (int i = 1; i < n; i++) {
+        if (liczby[i - 1] > 0 && liczby[i] > 0) {
+            // Wypisz parę (a, b)
+            cout << "(" << liczby[i - 1] << ", " << liczby[i] << ")" << endl;
+        }
+    }
+
+    return 0;
+}
