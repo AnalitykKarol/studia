@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int height;
+
+    // Pobierz od użytkownika wysokość choinki
+    cout << "Podaj wysokość choinki: ";
+    cin >> height;
+
+    // Rysuj choinkę
+    for (int i = 1; i <= height; i++) {
+        // Drukuj spacje przed gwiazdkami
+        for (int j = 1; j <= height - i; j++) {
+            cout << " ";
+        }
+
+        // Drukuj gwiazdki
+        for (int k = 1; k <= 2 * i - 1; k++) {
+            cout << "#";
+        }
+
+        // Przejdź do nowej linii po zakończeniu rysowania rzędu
+        cout << endl;
+    }
+
+    return 0;
+}
