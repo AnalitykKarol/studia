@@ -33,7 +33,7 @@ int main() {
         }
 
         cout << "Suma symboli to: " << sum << endl;
-        cout << "Wielkich liter było: " << big << endl;
+        cout << "Wielkich liter bylo: " << big << endl;
 
 
         big = 0;
