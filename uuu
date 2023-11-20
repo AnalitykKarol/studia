@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int height, width;
+
+    // Pobierz od użytkownika długość boków
+    cout << "Podaj długość boków wieży U:" << endl;
+    cout << "Wysokość: ";
+    cin >> height;
+    cout << "Szerokość: ";
+    cin >> width;
+
+    // Rysuj wieżę U
+    for (int i = 1; i <= height; i++) {
+        for (int j = 1; j <= width; j++) {
+            if ((i == 1 || i == height) || (i < height && (j == 1 || j == width))) {
+                // Jeśli jesteśmy na pierwszym lub ostatnim rzędzie,
+                // lub w środkowym obszarze na lewej lub prawej krawędzi, drukujemy 'U'.
+                cout << "U";
+            } else {
+                // W przeciwnym razie drukujemy spację.
+                cout << " ";
+            }
+        }
+        // Przechodzimy do nowej linii po zakończeniu rysowania rzędu.
+        cout << endl;
+    }
+
+    return 0;
+}
