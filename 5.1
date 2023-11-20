@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, a, r;
+
+    // Pobierz od użytkownika parametry ciągu arytmetycznego
+    cout << "Podaj pierwszy element ciągu (a): ";
+    cin >> a;
+
+    cout << "Podaj różnicę ciągu (r, różną od 0): ";
+    cin >> r;
+
+    // Sprawdź, czy różnica r nie jest równa 0
+    if (r == 0) {
+        cout << "Różnica ciągu nie może być równa 0. Program zakończył działanie." << endl;
+        return 1; // Kod błędu
+    }
+
+    cout << "Podaj liczbę wyrazów ciągu do wygenerowania (n, 0 < n < 1000): ";
+    cin >> n;
+
+    // Wygeneruj n kolejnych wyrazów ciągu arytmetycznego
+    int sum = 0; // Zmienna przechowująca sumę elementów ciągu
+
+    cout << "Wyrazy ciągu arytmetycznego: ";
+    for (int i = 0; i < n; i++) {
+        int element = a + i * r;
+        cout << element << " ";
+
+        // Dodaj aktualny element do sumy
+        sum += element;
+    }
+
+    // Wyświetl sumę wyrazów ciągu
+    cout << "\nSuma wyrazów ciągu: " << sum << endl;
+
+    return 0;
+}
