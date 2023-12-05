@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << "Podaj rozmiar tablicy: ";
+    int rozmiar;
+    cin >> rozmiar;
+
+    char* tablica = new char[rozmiar];
+
+    cout << "Wprowadź " << rozmiar << " znaków do tablicy:\n";
+    for (int i = 0; i < rozmiar; ++i) {
+        cout << "Znak " << i + 1 << ": ";
+        cin >> tablica[i];
+    }
+
+    cout << "Samogłoski w tablicy:\n";
+    for (int i = 0; i < rozmiar; ++i) {
+        char znak = tolower(tablica[i]);
+        if (znak == 'a' || znak == 'e' || znak == 'i' || znak == 'o' || znak == 'u' || znak == 'y') {
+            cout << tablica[i] << " ";
+        }
+    }
+    delete[] tablica;
+
+    return 0;
+}
