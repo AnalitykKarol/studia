@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double funkcja(double x, int n) {
+    return pow(x, n);
+}
+
+double pochodnaPrzyblizona(double x, int n, double h) {
+    return (funkcja(x + h, n) - funkcja(x, n)) / h;
+}
+
+double dokladnaPochodna(double x, int n) {
+    return n * pow(x, n - 1);
+}
+
+int main() {
+    double x = 2.0;
+    int n = 3;
+    double h_values[] = {0.1, 0.01, 0.001, 1e-4};
+
+    for (double h : h_values) {
+        double przyblizona = pochodnaPrzyblizona(x, n, h);
+        double dokladna = dokladnaPochodna(x, n);
+        double blad = abs(przyblizona - dokladna);
+
+        std::cout << "h = " << h << ":\n";
+        std::cout << "Pochodna przyblizona: " << przyblizona << "\n";
+        std::cout << "Dokladna pochodna: " << dokladna << "\n";
+        std::cout << "Blad: " << blad << "\n\n";
+    }
+
+    return 0;
+}
