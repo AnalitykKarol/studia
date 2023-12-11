@@ -20,10 +20,8 @@ int main() {
 
     for (int i = 0; i < n; ++i) {
         if (array[i] > 0) {
-            // Jeśli liczba jest dodatnia, dodaj ją do bieżącego podciągu
             progress.push_back(array[i]);
         } else {
-            // Jeśli liczba nie jest dodatnia, zakończ bieżący podciąg
             if (progress.size() > biggie.size()) {
                 biggie = progress;
             }
