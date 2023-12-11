@@ -1,59 +1,75 @@
 #include <iostream>
+
 using namespace std;
 
-void sortor(double arr[], int size) {
-    for (int i = 0; i < size - 1; ++i) {
-        for (int j = 0; j < size - i - 1; ++j) {
-            if (arr[j] > arr[j + 1]) {
-                double temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+int main() {
+    int rzad, kolumna;
+    cout << "Podaj liczbe wierszy: ";
+    cin >> rzad;
+    cout << "Podaj liczbe kolumn: ";
+    cin >> kolumna;
+
+    int **matryca = new int *[rzad];
+    for (int i = 0; i < rzad; ++i) {
+        matryca[i] = new int[kolumna];
+    }
+
+    cout << "Wprowadz elementy tablicy kolumnowo:" << endl;
+    for (int j = 0; j < kolumna; ++j) {
+        for (int i = 0; i < rzad; ++i) {
+            cout << "Element [" << i << "][" << j << "]: ";
+            cin >> matryca[i][j];
         }
     }
-}
 
-void showtab(double arr[], int size) {
-    for (int i = 0; i < size; ++i) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
-double mediana(double arr[], int size) {
-    if (size % 2 == 0) {
-        return (arr[size / 2 - 1] + arr[size / 2]) / 2.0;
-    } else {
-        return arr[size / 2];
-    }
-}
-
-int main() {
-    int n;
-    cout << "Podaj wielkosc ciagu" << endl;
-    cin >> n;
-    const int size = n;
-    double arr[size];
-
-    cout << "Podaj " << n << " liczb rzeczywistych: ";
-    for (int i = 0; i < size; ++i) {
-        cin >> arr[i];
+    cout << "Oryginalna tablica:" << endl;
+    for (int i = 0; i < rzad; ++i) {
+        for (int j = 0; j < kolumna; ++j) {
+            cout << matryca[i][j] << " ";
+        }
+        cout << endl;
     }
 
-    sortor(arr, size);
-    cout << "Posortowana tablica rosnaco: ";
-    showtab(arr, size);
+    int r1, r2;
+    cout << "Podaj dwie kolumny do zamiany miejscami (indeksowane od 0): ";
+    cin >> r1 >> r2;
 
-    for (int i = 0; i < size / 2; ++i) {
-        double temp = arr[i];
-        arr[i] = arr[size - i - 1];
-        arr[size - i - 1] = temp;
+    for (int i = 0; i < rzad; ++i) {
+        int temp = matryca[i][r1];
+        matryca[i][r1] = matryca[i][r2];
+        matryca[i][r2] = temp;
     }
 
-    cout << "Posortowana tablica malejaco: ";
-    showtab(arr, size);
+    cout << "Tablica po zamianie miejscami kolumn:" << endl;
+    for (int i = 0; i < rzad; ++i) {
+        for (int j = 0; j < kolumna; ++j) {
+            cout << matryca[i][j] << " ";
+        }
+        cout << endl;
+    }
 
-    cout << "Mediana tablicy: " << mediana(arr, size) << endl;
+    int k1, k2;
+    cout << "Podaj dwa wiersze do zamiany miejscami (indeksowane od 0): ";
+    cin >> k1 >> k2;
+
+    for (int j = 0; j < kolumna; ++j) {
+        int temp = matryca[k1][j];
+        matryca[k1][j] = matryca[k2][j];
+        matryca[k2][j] = temp;
+    }
+
+    cout << "Tablica po zamianie miejscami wierszy:" << endl;
+    for (int i = 0; i < rzad; ++i) {
+        for (int j = 0; j < kolumna; ++j) {
+            cout << matryca[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    for (int i = 0; i < rzad; ++i) {
+        delete[] matryca[i];
+    }
+    delete[] matryca;
 
     return 0;
 }
