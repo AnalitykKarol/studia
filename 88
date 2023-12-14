@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+void sortor(double arr[], int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (arr[j] > arr[j + 1]) {
+                double temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void showtab(double arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+double mediana(double arr[], int size) {
+    if (size % 2 == 0) {
+        return (arr[size / 2 - 1] + arr[size / 2]) / 2.0;
+    } else {
+        return arr[size / 2];
+    }
+}
+
+int main() {
+    int n;
+    cout << "Podaj wielkosc ciagu" << endl;
+    cin >> n;
+    const int size = n;
+    double arr[size];
+
+    cout << "Podaj " << n << " liczb rzeczywistych: ";
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
+    }
+
+    sortor(arr, size);
+    cout << "Posortowana tablica rosnaco: ";
+    showtab(arr, size);
+
+    for (int i = 0; i < size / 2; ++i) {
+        double temp = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size - i - 1] = temp;
+    }
+
+    cout << "Posortowana tablica malejaco: ";
+    showtab(arr, size);
+
+    cout << "Mediana tablicy: " << mediana(arr, size) << endl;
+
+    return 0;
+}
