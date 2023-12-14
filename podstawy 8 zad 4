@@ -1,75 +1,55 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main() {
-    int rzad, kolumna;
-    cout << "Podaj liczbe wierszy: ";
-    cin >> rzad;
-    cout << "Podaj liczbe kolumn: ";
-    cin >> kolumna;
+    int n, m;
+    cout << "Podaj liczbe wierszy i kolumn (oddzielone spacja): ";
+    cin >> n >> m;
 
-    int **matryca = new int *[rzad];
-    for (int i = 0; i < rzad; ++i) {
-        matryca[i] = new int[kolumna];
-    }
+    vector<vector<int>> matryca(n, vector<int>(m));
 
-    cout << "Wprowadz elementy tablicy kolumnowo:" << endl;
-    for (int j = 0; j < kolumna; ++j) {
-        for (int i = 0; i < rzad; ++i) {
-            cout << "Element [" << i << "][" << j << "]: ";
+    cout << "Podaj elementy macierzy:" << endl;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
             cin >> matryca[i][j];
         }
     }
 
-    cout << "Oryginalna tablica:" << endl;
-    for (int i = 0; i < rzad; ++i) {
-        for (int j = 0; j < kolumna; ++j) {
-            cout << matryca[i][j] << " ";
+    vector<int> bigger;
+    vector<int> tolow;
+    vector<int> even;
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (matryca[i][j] > 0) {
+                bigger.push_back(matryca[i][j]);
+            } else if (matryca[i][j] < 0) {
+                tolow.push_back(matryca[i][j]);
+            } else {
+                even.push_back(matryca[i][j]);
+            }
         }
-        cout << endl;
     }
 
-    int r1, r2;
-    cout << "Podaj dwie kolumny do zamiany miejscami (indeksowane od 0): ";
-    cin >> r1 >> r2;
-
-    for (int i = 0; i < rzad; ++i) {
-        int temp = matryca[i][r1];
-        matryca[i][r1] = matryca[i][r2];
-        matryca[i][r2] = temp;
+    cout << "Liczby wieksze od zera: {";
+    for (int num : bigger) {
+        cout << num << ", 6";
     }
+    cout << "}" << endl;
 
-    cout << "Tablica po zamianie miejscami kolumn:" << endl;
-    for (int i = 0; i < rzad; ++i) {
-        for (int j = 0; j < kolumna; ++j) {
-            cout << matryca[i][j] << " ";
-        }
-        cout << endl;
+    cout << "Liczby mniejsze od zera: {";
+    for (int num : tolow) {
+        cout << num << ", ";
     }
+    cout << "}" << endl;
 
-    int k1, k2;
-    cout << "Podaj dwa wiersze do zamiany miejscami (indeksowane od 0): ";
-    cin >> k1 >> k2;
-
-    for (int j = 0; j < kolumna; ++j) {
-        int temp = matryca[k1][j];
-        matryca[k1][j] = matryca[k2][j];
-        matryca[k2][j] = temp;
+    cout << "Liczby rowne zero: {";
+    for (int num : even) {
+        cout << num << ", ";
     }
-
-    cout << "Tablica po zamianie miejscami wierszy:" << endl;
-    for (int i = 0; i < rzad; ++i) {
-        for (int j = 0; j < kolumna; ++j) {
-            cout << matryca[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    for (int i = 0; i < rzad; ++i) {
-        delete[] matryca[i];
-    }
-    delete[] matryca;
+    cout << "}" << endl;
 
     return 0;
 }
