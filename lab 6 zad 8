@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cout << "Podaj liczbe wierszy i kolumn (oddzielone spacja): ";
+    cin >> n >> m;
+
+    vector<vector<int>> matryca(n, vector<int>(m));
+
+    cout << "Podaj elementy macierzy:" << endl;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> matryca[i][j];
+        }
+    }
+
+    vector<int> bigger;
+    vector<int> tolow;
+    vector<int> even;
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (matryca[i][j] > 0) {
+                bigger.push_back(matryca[i][j]);
+            } else if (matryca[i][j] < 0) {
+                tolow.push_back(matryca[i][j]);
+            } else {
+                even.push_back(matryca[i][j]);
+            }
+        }
+    }
+
+    cout << "Liczby wieksze od zera: {";
+    for (int num : bigger) {
+        cout << num << ", 6";
+    }
+    cout << "}" << endl;
+
+    cout << "Liczby mniejsze od zera: {";
+    for (int num : tolow) {
+        cout << num << ", ";
+    }
+    cout << "}" << endl;
+
+    cout << "Liczby rowne zero: {";
+    for (int num : even) {
+        cout << num << ", ";
+    }
+    cout << "}" << endl;
+
+    return 0;
+}
