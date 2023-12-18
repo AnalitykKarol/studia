@@ -1,0 +1,23 @@
+#include <iostream>
+
+struct vector2d
+{
+  double x;
+  double y;
+
+  vector2d operator+(const vector2d& other) const
+  {
+    return { x + other.x, y + other.y };
+  }
+};
+
+int main()
+{
+  vector2d v0 = { 1., 2. };
+  vector2d v1 = { 2., 2. };
+  vector2d res = v0 + v1;
+  std::cout << res.x << ' ' << res.y << '\n';
+  std::cout << (vector2d{ 0., 0. } + v0).x << '\n';
+
+  return 0;
+}
