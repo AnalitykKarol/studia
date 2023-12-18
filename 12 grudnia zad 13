@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+
+struct PlytaWersjaKinowa {
+    string tytul;
+    string gatunek;
+    string wersja;
+    int czas_trwania;
+    float cena;
+};
+
+int main() {
+    const int n = 8;
+    PlytaWersjaKinowa plyty[n] = {
+        {"Film1", "Akcja", "Wersja kinowa", 122, 29.59},
+        {"Film2", "Komedia", "Wersja reżyserska", 90, 19.90},
+        {"Film3", "Dramat", "Wersja kinowa", 153, 39.49},
+        {"Film4", "Dramat", "Wersja reżyserska", 120, 43.95},
+        {"Film5", "Komedia", "Wersja kinowa", 99, 24.59},
+        {"Film6", "Dramat", "Wersja kinowa", 132, 39.60},
+        {"Film7", "Science fiction", "Wersja reżyserska", 120, 49.20},
+        {"Film8", "Komedia", "Wersja kinowa", 111, 22.59}
+    };
+
+    unordered_map<string, pair<float, int>> gatunki;
+
+    for (int i = 0; i < n; i++) {
+        gatunki[plyty[i].gatunek].first += plyty[i].cena;
+        gatunki[plyty[i].gatunek].second++;
+    }
+
+    cout << "Srednie ceny plyt dla kazdego gatunku:" << endl;
+    for (const auto& entry : gatunki) {
+        float srednia_cena = entry.second.first / entry.second.second;
+        cout << entry.first << ": " << srednia_cena << endl;
+    }
+
+    cout << "\nTytuly filmow ponizej sredniej ceny dla danego gatunku:" << endl;
+    for (int i = 0; i < n; i++) {
+        float srednia_cena = gatunki[plyty[i].gatunek].first / gatunki[plyty[i].gatunek].second;
+        if (plyty[i].cena < srednia_cena) {
+            cout << plyty[i].tytul << " (" << plyty[i].gatunek << ")" << endl;
+        }
+    }
+
+    return 0;
+}
