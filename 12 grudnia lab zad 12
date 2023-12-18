@@ -1,0 +1,53 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+#include <cmath>
+using namespace std;
+
+struct punkt {
+    double x, y, z;
+};
+
+int main() {
+    int rozmiar = 0;
+    cout << "Podaj rozmiar matrycy: " << endl;
+    cin >> rozmiar;
+
+    vector<double> wynik;
+    punkt punkty[rozmiar];
+
+    for (int licz = 0; licz < rozmiar; licz++) {
+        cout << "Podaj wspolrzedne punktu " << licz + 1 << " (x y z): ";
+        cin >> punkty[licz].x >> punkty[licz].y >> punkty[licz].z;
+    }
+
+    double minOdleglosc = numeric_limits<double>::max();
+    int indeksPunktu1 = -1, indeksPunktu2 = -1;
+    int p1x, p1y, p1z, p2x, p2y, p2z;
+
+    for (int i = 0; i < rozmiar; i++) {
+        for (int j = i + 1; j < rozmiar; j++) {
+            double odleglosc = sqrt(pow(punkty[i].x - punkty[j].x, 2) +
+                                    pow(punkty[i].y - punkty[j].y, 2) +
+                                    pow(punkty[i].z - punkty[j].z, 2));
+
+            if (odleglosc < minOdleglosc) {
+                minOdleglosc = odleglosc;
+                indeksPunktu1 = i;
+                indeksPunktu2 = j;
+                p1x = punkty[i].x;
+                p1y = punkty[i].y;
+                p1z = punkty[i].z;
+                p2x = punkty[j].x;
+                p2y = punkty[j].y;
+                p2z = punkty[j].z;
+            }
+        }
+    }
+    cout << "Najmniejsza odleglosc miedzy punktami to: " << minOdleglosc << '\n';
+    cout << "Para punktow o najmniejszej odleglosci: Punkt " << indeksPunktu1 + 1 << " i Punkt " << indeksPunktu2 + 1 << '\n';
+    cout << "Dokladne wspolrzedne " << indeksPunktu1 + 1 << ": " << p1x << "," << p1y << "," << p1z << '\n';
+    cout << "Dokladne wspolrzedne " << indeksPunktu2 + 1 << ": " << p2x << "," << p2y << "," << p2z << '\n';
+
+    return 0;
+}
