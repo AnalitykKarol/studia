@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+
+void god(int** tab, int n, int m) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << "wprowadz element tablicy [" << i << "][" << j << "]: ";
+            cin >> tab[i][j];
+        }
+    }
+}
+
+
+void poka(int** tab, int n, int m) {
+    cout << "Zawartosc:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << tab[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int const n = 2;
+    int const m = 3;
+
+    int** mytab = new int*[n];
+    for (int i = 0; i < n; i++) {
+        mytab[i] = new int[m];
+    }
+
+    god(mytab, n, m);
+    poka(mytab, n, m);
+
+    for (int i = 0; i < n; i++) {
+        delete[] mytab[i];
+    }
+    delete[] mytab;
+
+    return 0;
+}
